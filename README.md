@@ -1,47 +1,36 @@
 ## 폴더 구조 예시 (헥사고널 아키텍쳐 + 도메인 주도 개발 방식 + CQRS 패턴)
 
 ```
-무슨 근스트js여 kotlin해~
-src/      
-│── domain/ DDD를 위한 도메인 모음      
-│   ├── domain-도메인 명 (추상체)/      
-│   │   ├── src/main/kotlin      
-│   │   │   ├── dto/ response dto model      
-│   │   │   │   ├── response/ response dto model      
-│   │   │   │   ├── request/ 요청 dto model        
-│   │   │   ├── enumeration/ enum 모음      
-│   │   │   ├── port/ 포트       
-│   │   │   │   ├── in/ in-포트      
-│   │   │   │   │   ├── query       
-│   │   │   │   │   ├── command      
-│   │   │   │   ├── out/ out-포트      
-│   │   │   │   │   ├── query      
-│   │   │   │   │   ├── command    
-│   ├── domain-도메인 명-client (구현체)/      
-│   │   ├── src/main/kotlin      
-│   │   │   ├── entity (entity 모음)      
-│   │   │   ├── enumeration (exception 관련)      
-│   │   │   ├── repository/ querydsl 구현체 및 jpa 추상체 (out adapter)      
-│   │   │   ├── service/ 서비스 (비즈니스 로직 구현체 폴더)      
-│   │   │   │   ├── query      
-│   │   │   │   ├── command      
-│   │   │   ├── util      
-│── 프로젝트 명      
-│   ├── adater-data-jpa   jpa 및 db 연결을 위한 폴더      
-│   │   ├── src/main/kotlin      
-│   │   │   ├── config/ db 설정      
-│   ├── connector rest api (in adapter) + service 호출 역할      
-│   │   ├── src/main/kotlin      
-│   │   │   ├── annotation/ 커스텀 어노테이션       
-│   │   │   ├── config/ 설정       
-│   │   │   ├── constant/ 상수       
-│   │   │   ├── controller/ 컨트롤러       
-│   │   │   ├── dto/ dto       
-│   │   │   │   ├── request/ 요청 dto model        
-│   │   │   ├── resolver/ 설정       
-│   │   │   ├── scheduler/ 스케줄러       
-│   │   │   ├── service/ 서비스 구현체 (추상화 할 필요가 없으므로 구현체로 바로 구현)       
-│   │   │   ├── util/        
+│      
+├── 서비스명-service/                   # 서비스      
+│   ├── src/      
+│   │   ├── domain/                 # 도메인 모델      
+│   │   │   ├── user/               # 도메인 관련      
+│   │   │   │   ├── UserEntity.kt   # 도메인 엔티티 모델      
+│   │   │   │   ├── UserService.kt  # 서비스      
+│   │   │   │   ├── UserRepository.kt # 사용자 리포지토리      
+│   │   ├── application/            # 애플리케이션 서비스      
+│   │   │   ├── UserApplicationService.kt  # 사용자 관련 애플리케이션 서비스      
+│   │   ├── infrastructure/         # 보안, DB 연결 등      
+│   │   │   ├── config/             # DB 설정      
+│   │   │   ├── security/           # JWT 인증 관련 코드      
+│   │   ├── build.gradle            # Gradle 설정      
+│      
+├── api-gateway/                      # API Gateway
+│   ├── src/
+│   │   ├── controller/               # 사용자 관련 컨트롤러
+│   ├── build.gradle                  # API Gateway 관련 설정
+│   ├── application.yml               # Eureka 설정 및 API Gateway 설정
+│
+├── eureka-server/                    # Eureka Server (서비스 디스커버리)
+│   ├── src/
+│   │   ├── application.yml           # Eureka 설정
+│   ├── build.gradle                  # Eureka 서버 관련 설정
+│
+└── spring-cloud-config/              # Spring Cloud Config Server
+    ├── src/
+    │   ├── application.yml           # Config 서버 설정
+    ├── build.gradle                  # Spring Cloud Config Server 설정
 ```
 
 ## 명명 규칙 (파일명)
