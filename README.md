@@ -1,44 +1,47 @@
 ## 폴더 구조 예시 (헥사고널 아키텍쳐 + 도메인 주도 개발 방식 + CQRS 패턴)
 
 ```
+무슨 근스트js여 kotlin해~
 src/      
-│── domain/ 도메인 계층 (비즈니스 로직)      
-│   ├── 도메인 명/     
-│   │   ├── dto/ response dto model      
-│   │   │   ├── response/ response dto model      
-│   │   │   ├── request/ 요청 dto model      
-│   │   ├── entity/ 해당 도메인들에 관한 typeORM entity 모음      
-│   │   ├── enumeration/ enum 모음      
-│   │   ├── port/ 포트       
-│   │   │   ├── in/ in-포트      
-│   │   │   │   ├── query      (query-이름.use-case.ts 등의 인터페이스)      
-│   │   │   │   ├── command    (command-이름.use-case.ts 등의 인터페이스)      
-│   │   │   ├── out/ out-포트      (query(command)-이름.repository.ts 등의 인터페이스)
-│   │   │   │   ├── query      (query-이름.repository.ts 등의 인터페이스)
-│   │   │   │   ├── command    (command-이름.repository.ts 등의 인터페이스)
-│   │   ├── service/ 서비스 (비즈니스 로직 구현체 폴더)      
-│   │   │   ├── query      
-│   │   │   ├── command      
-│      
-│── infrastructure/ 인프라 계층 (DB, SECURITY 설정, 외부 API, WebSocket)      
-│   ├── 도메인 명/      
-│   │   ├── repository/ 유저 도메인 에서의 DB 통신 구현체 (adapter out 역할)      
-│   │   ├── security/ jwt 모듈 등 보안 관련 설정      
-│   │   ├── external-api/ 유저 도메인 에서의 외부 API 통신      
-│   │   ├── websocket/ 유저 도메인 에서의 웹소켓 API 통신      
-│   │   │   ├── config/ 웹소켓의 gateway 및 설정, 인터셉터 등의 파일이 존재하는 폴더.      
-│      
-│── interface/ 컨트롤러 모음 (어댑터의 in 역할)      
-│   ├── 도메인 명/      
-│   │   ├── rest-api (rest api 엔드포인트)
-│   │   ├── websocket (웹소켓 엔드포인트)
-│      
-│── common/                     공통 유틸리티 및 라이브러리      
-│   ├── logger/                 로깅 관련 유틸리티      
-│   ├── exception/              예외 처리 관련 유틸리티      
-│   ├── encryption/             암호화 관련 유틸리티      
-│── main.ts      
-│── app.module.ts      
+│── domain/ DDD를 위한 도메인 모음      
+│   ├── domain-도메인 명 (추상체)/      
+│   │   ├── src/main/kotlin      
+│   │   │   ├── dto/ response dto model      
+│   │   │   │   ├── response/ response dto model      
+│   │   │   │   ├── request/ 요청 dto model        
+│   │   │   ├── enumeration/ enum 모음      
+│   │   │   ├── port/ 포트       
+│   │   │   │   ├── in/ in-포트      
+│   │   │   │   │   ├── query       
+│   │   │   │   │   ├── command      
+│   │   │   │   ├── out/ out-포트      
+│   │   │   │   │   ├── query      
+│   │   │   │   │   ├── command    
+│   ├── domain-도메인 명-client (구현체)/      
+│   │   ├── src/main/kotlin      
+│   │   │   ├── entity (entity 모음)      
+│   │   │   ├── enumeration (exception 관련)      
+│   │   │   ├── repository/ querydsl 구현체 및 jpa 추상체 (out adapter)      
+│   │   │   ├── service/ 서비스 (비즈니스 로직 구현체 폴더)      
+│   │   │   │   ├── query      
+│   │   │   │   ├── command      
+│   │   │   ├── util      
+│── 프로젝트 명      
+│   ├── adater-data-jpa   jpa 및 db 연결을 위한 폴더      
+│   │   ├── src/main/kotlin      
+│   │   │   ├── config/ db 설정      
+│   ├── connector rest api (in adapter) + service 호출 역할      
+│   │   ├── src/main/kotlin      
+│   │   │   ├── annotation/ 커스텀 어노테이션       
+│   │   │   ├── config/ 설정       
+│   │   │   ├── constant/ 상수       
+│   │   │   ├── controller/ 컨트롤러       
+│   │   │   ├── dto/ dto       
+│   │   │   │   ├── request/ 요청 dto model        
+│   │   │   ├── resolver/ 설정       
+│   │   │   ├── scheduler/ 스케줄러       
+│   │   │   ├── service/ 서비스 구현체 (추상화 할 필요가 없으므로 구현체로 바로 구현)       
+│   │   │   ├── util/        
 ```
 
 ## 명명 규칙 (파일명)
