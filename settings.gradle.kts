@@ -4,3 +4,7 @@ plugins {
 
 rootProject.name = "kotlin-tradle-project-backend"
 include("untitled")
+include("auth-service")
+include("api-gateway")
+include("eureka-server")
+include("spring-cloud-config")
