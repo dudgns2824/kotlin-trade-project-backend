@@ -60,7 +60,7 @@ spring:
 ## 스웨거 설정(spring doc)
 springdoc:
   api-docs.enabled: true
-  packages-to-scan: com.vchat.backend
+  packages-to-scan: trade.backend.user.service
   swagger-ui.path: /api/v1/trade-backend-user-service/swagger-ui
   api-docs.path: /api/v1/trade-backend-user-service/api-docs
   api-docs.groups.enabled: true
