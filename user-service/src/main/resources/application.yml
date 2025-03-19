@@ -1,0 +1,76 @@
+## 서버 설정
+server:
+  port: 8080
+  shutdown: graceful
+  name: auth
+
+## 스프링 web 설정
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - jpa-env
+  datasource:
+    url: ${local.db.url}
+    username: ${local.db.username}
+    password: ${local.db.password}
+    driver-class-name: ${local.db.driver-class-name}
+  mail:
+    max-request-count: ${local.mail.max-request-count}
+    max-request-minutes: ${local.mail.max-request-minutes}
+    max-request-per-time: ${local.mail.max-request-per-time}
+    mail-verify-expire-time: ${local.mail.mail-verify-expire-time}
+    mail-request-expire: ${local.mail.mail-request-expire}
+    from-email: ${local.mail.from-email}
+    username: ${local.mail.username}
+    password: ${local.mail.password}
+    host: ${local.mail.host}
+    port: ${local.mail.port}
+    properties:
+      mail:
+        smtp:
+          auth: ${local.mail.properties.mail.smtp.auth}
+          starttls:
+            enable: ${local.mail.properties.mail.smtp.starttls.enable}
+  application:
+    name: auth
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 512MB
+  main:
+    allow-bean-definition-overriding: true
+  h2:
+    console:
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000 #최적화 옵션
+        database-platform: org.hibernate.dialect.MySQL57Dialect
+        ddl-auto: none
+  logging:
+    level:
+      org.hibernate.SQL: debug
+      org.hibernate.orm.jdbc.bind: trace
+
+## 스웨거 설정(spring doc)
+springdoc:
+  api-docs.enabled: true
+  packages-to-scan: com.vchat.backend
+  swagger-ui.path: /api/v1/trade-backend-user-service/swagger-ui
+  api-docs.path: /api/v1/trade-backend-user-service/api-docs
+  api-docs.groups.enabled: true
+  cache.disabled: true
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  server.url: http://localhost:8080
+
+## JWT 설정
+jwt:
+  secret: ${local.jwt.secret}
+  accessTokenValidTimeMs: 7200000
+  refreshTokenValidTimeMs: 604800000

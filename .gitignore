@@ -1,3 +1,7 @@
+application-env.yml
+application-adapter-aws.yml
+*-env.json
+
 # Ignore Gradle project-specific cache directory
 .gradle
 
