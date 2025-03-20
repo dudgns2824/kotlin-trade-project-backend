@@ -32,12 +32,10 @@
 │   │   │   │   │   │   ├── entity      
 │   │   │   │   │   │   │   ├── id # entity embeddedId 모음      
 │   │   │   │   │   │   ├── repository      
-│   │   │   │   │   │   │   ├── query (조회 관련 repository)       
-│   │   │   │   │   │   │   │   ├── interface (jpaRepository)       
-│   │   │   │   │   │   │   │   ├── support (JPAQueryFactory를 이용한 querydsl로 작성된 구현체)       
-│   │   │   │   │   │   │   ├── command (Create,Update,Delete 관련 repository)       
-│   │   │   │   │   │   │   │   ├── interface (jpaRepository)       
-│   │   │   │   │   │   │   │   ├── support (JPAQueryFactory를 이용한 querydsl로 작성된 구현체)       
+│   │   │   │   │   │   │   ├── interface (jpaRepository)       
+│   │   │   │   │   │   │   ├── support (JPAQueryFactory를 이용한 querydsl로 작성된 구현체)    
+│   │   │   │   │   │   │   │   ├── query (조회 관련 repository)          
+│   │   │   │   │   │   │   │   ├── command (Create,Update,Delete 관련 repository)          
 │   │   ├── infrastructure/         # 보안, DB 연결 등      
 │   │   │   ├── config/             # DB 설정      
 │├── build.gradle            # Gradle 설정      
