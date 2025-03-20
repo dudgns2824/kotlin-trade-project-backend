@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:user-service/src/main/kotlin/trade/backend/user/service/adapter/out/jpa/entity/MailEntity.kt
 package trade.backend.user.service.adapter.out.jpa.entity
-========
-package trade.backend.user.service.auth.adapter.out.jpa.entity
->>>>>>>> d2886b4 (user-service gradle 설정 추가):user-service/src/main/kotlin/trade/backend/user/service/auth/adapter/out/jpa/entity/MailEntity.kt
 
 import jakarta.persistence.*
 
